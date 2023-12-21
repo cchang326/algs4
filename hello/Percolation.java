@@ -4,7 +4,6 @@
  *  Last modified:     October 16, 1842
  **************************************************************************** */
 
-import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
@@ -36,6 +35,10 @@ public class Percolation {
     public void open(int row, int col) {
         if (!isLegalCoordinate(row, col)) {
             throw new IllegalArgumentException("Invalid coordinate!");
+        }
+
+        if (isOpen(row, col)) {
+            return;
         }
 
         int currIndex = getUFIndex(row, col);
@@ -97,16 +100,16 @@ public class Percolation {
     }
 
     // test client (optional)
-    public static void main(String[] args) {
-        Percolation perc = new Percolation(4);
-        perc.open(1, 2);
-        perc.open(2, 2);
-        perc.open(2, 3);
-        perc.open(4, 3);
-        StdOut.println("opened " + perc.numberOfOpenSites());
-        StdOut.println("percolates? " + perc.percolates());
-        perc.open(3, 3);
-        StdOut.println("opened " + perc.numberOfOpenSites());
-        StdOut.println("percolates? " + perc.percolates());
-    }
+    // public static void main(String[] args) {
+    //     Percolation perc = new Percolation(4);
+    //     perc.open(1, 2);
+    //     perc.open(2, 2);
+    //     perc.open(2, 3);
+    //     perc.open(4, 3);
+    //     StdOut.println("opened " + perc.numberOfOpenSites());
+    //     StdOut.println("percolates? " + perc.percolates());
+    //     perc.open(3, 3);
+    //     StdOut.println("opened " + perc.numberOfOpenSites());
+    //     StdOut.println("percolates? " + perc.percolates());
+    // }
 }
